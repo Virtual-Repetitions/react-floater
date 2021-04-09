@@ -11,7 +11,8 @@ const plugins = () => [
 
 export default {
   input: 'src/index.js',
-  output: [{ file: 'lib/index.js', format: 'cjs' }, { file: 'es/index.js', format: 'es' }],
+  output: [{ file: 'lib/index.js', format: 'cjs',   intro: 'var global = typeof self !== undefined ? self : this;',
+}, { file: 'es/index.js', format: 'es',   intro: 'var global = typeof self !== undefined ? self : this;'}],
   external: [
     ...Object.keys(packageJSON.peerDependencies),
     ...Object.keys(packageJSON.dependencies),
